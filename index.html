@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harry the O.G. chatbot</title>
+    <link id="main-stylesheet" rel="stylesheet" href="css/main.css">
+    <link id="dark-stylesheet" rel="stylesheet" href="css/main-dark.css">
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="resources/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="resources/favicon-32x32.png"> 
+    <link rel="icon" type="image/png" sizes="16x16" href="resources/favicon-16x16.png"> 
+   
+</head>
+<body>
+
+<div id="top-bar">
+	<a href="/">
+        <img src="resources/harry.svg" class="logo">
+        </a>
+        <div id="settings-icon" onclick="toggleSettingsWindow()">
+        <img src="resources/settings.svg" class="settings-ico">
+        </div>
+        
+        <div id="darkmode-icon" onclick="toggleDarkMode()">
+        <img src="resources/dark-theme.svg" class="darkmode-ico">
+        </div>
+        
+        
+        <div id="settings-window" class="hidden">
+            <label>
+                Maybe someday!
+                <!--<input type="checkbox" id="styleCheckbox" onchange="changeChatbotStyle()"> Rapper Mode -->
+            </label>
+        </div>
+</div>
+
+
+    <div id="chat-container">
+
+
+        
+        <div id="chat-messages"></div>
+      
+      
+      	<div id="loading-indicator" class="hidden">
+	<img class="spinner" src="resources/splash.svg" alt="Loading Spinner">
+	</div>
+        
+        <div id="user-input">
+            <input type="text" id="user-message" placeholder="Type your message...">
+            <button class="button-send" onclick="sendMessage()">Send</button>
+        </div>
+	
+
+
+
+
+    </div>
+
+
+    <script src="js/app.js"></script>
+    <script src="js/darkmode.js"></script>
+
+
+
+</body>
+</html>

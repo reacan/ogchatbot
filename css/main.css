@@ -1,0 +1,240 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#top-bar {
+  background-color: #f4f4f4; /* Adjust this color to fit your style */
+  padding: 2rem; /* Add some padding for space */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999; /* Keep it on top */
+}
+
+
+
+#chat-container {
+    max-width: 45rem;
+    width: 100%;
+    position: fixed;
+    bottom: 1rem;
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
+
+
+#chat-messages {
+    padding: 1rem;
+    overflow-y: auto;
+    max-height: calc(85vh - 2.1rem); /* Adjust this value based on your top bar's height */
+}
+
+
+
+#user-input {
+    display: flex;
+    padding: 1rem;
+    border-top: 0.3rem solid #eee;
+}
+
+#user-input input {
+    flex: 1;
+    padding: 1rem;
+    border: none;
+    border-radius: 1rem;
+    margin-right: 2rem;
+}
+
+#user-input button {
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    padding: 1rem;
+    border-radius: 1rem;
+    cursor: pointer;
+}
+
+#loading-indicator {
+    display: none;
+    padding: 1rem;
+    text-align: center;
+    font-weight: bold;
+}
+
+.user-message {
+    background-color: #4CAF50;
+    display: inline-block;
+    color: #fff;
+    border-radius: 6px;
+    padding: 10px 10px;
+    margin: 0;
+    max-width: 90%; 
+    overflow-x: auto;
+   /* width: auto; */
+    word-wrap: break-word;
+    align-self: flex-end;
+}
+
+.ai-message {
+    background-color: #ECECEC;
+    color: #333;
+    border-radius: 8px;
+    padding: 10px;
+    margin: 10px 0;
+    max-width: 90%;
+    word-wrap: break-word;
+    align-self: flex-start;
+    overflow-x: auto;
+}
+
+
+
+.code-block {
+    background-color: #f0f0f0; /* Adjust the background color for code blocks */
+    padding: 10px;
+    border-radius: 8px;
+    margin: 10px 0;
+    max-width: 100%; /* Adjust the max-width as needed */
+    overflow-x: auto;
+    word-wrap: break-word;
+}
+
+
+.button-send {
+    font-size: 0.9rem;
+    font-weight: bold;
+    border-radius: 0.5rem !important;
+    font-family: inherit;
+    background: #111 !important;
+    color: #fefefe !important;
+    padding: 0.5rem !important;
+    border: 0 !important;
+}
+
+.button-send:active {
+    font-size: 0.5rem; /* Adjust the size as needed */
+}
+
+#settings-icon {
+    position: fixed;
+    top: 1rem;
+    right: 1.2rem;
+    cursor: pointer;
+}
+
+#darkmode-icon {
+    position: fixed;
+    top: 1rem;
+    right: 4rem;
+    cursor: pointer;
+}
+
+.settings-ico {
+    width: 2rem;
+    height: 2rem;
+}
+
+.darkmode-ico {
+    width: 2rem;
+    height: 2rem;
+}
+
+.logo {
+    width: 10rem;
+    height: 3rem;
+    position: fixed;
+    top: 0.5rem;
+    left: 1rem;
+}
+
+
+#settings-window {
+    position: fixed;
+    top: 5rem;
+    right: 2rem;
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: none; /* Start with the window hidden */
+}
+
+.hidden {
+    display: none;
+}
+
+/* For WebKit Browsers (Chrome, Safari) */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #eee; /* Adjust this color for the light mode feel */
+}
+
+::-webkit-scrollbar-track {
+  background-color: #ddd; /* Adjust this color for the light mode feel */
+}    
+    
+/* For Firefox */
+/* You might need to adjust this color as well */
+scrollbar-color: #eee #ddd;
+scrollbar-width: thin;
+
+/* For older versions of Firefox */
+/* You might need to adjust this color as well */
+-moz-appearance: none;
+-moz-scrollbar-color: #eee #ddd;   
+
+/* For iOS */
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+    #chat-container {
+        position: fixed;
+        bottom: 1rem;
+        max-width: 45rem;
+        width: 100%;
+        background-color: #333;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+        z-index: 1;
+        transition: transform 0.3s ease-out;
+    }
+
+    body.keyboard-active #chat-container {
+        transform: translateY(-10vh);
+    }
+}
+
+/* For Android */
+@media screen and (max-aspect-ratio: 1/1) {
+    #chat-container {
+        position: fixed;
+        bottom: 1rem;
+        max-width: 45rem;
+        width: 100%;
+        background-color: #fff;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+        z-index: 1;
+        transition: transform 0.3s ease-out;
+    }
+
+    body.keyboard-active #chat-container {
+        transform: translateY(-10vh);
+    }
+}
