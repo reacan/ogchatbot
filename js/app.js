@@ -31,34 +31,14 @@ function sendMessage() {
         },
         body: JSON.stringify({ userId, message: userMessage }), // Include userId in the request body
     })
-    .then(response => {
-        const reader = response.body.getReader();
-        const decoder = new TextDecoder();
-        let done = false;
-        let result = '';
-
-        // Stream the data as it comes in
-        return new ReadableStream({
-            start(controller) {
-                function push() {
-                    reader.read().then(({ done, value }) => {
-                        if (done) {
-                            controller.close();
-                            return;
-                        }
-
-                        // Decode the chunk and append it to result
-                        result += decoder.decode(value, { stream: true });
-
-                        // Display the updated AI response on the UI as it streams
-                        displayMessage('ai', result);
-
-                        push(); // Continue reading the next chunk
-                    });
-                }
-                push();
-            }
-        });
+    .then(response => response.json()) // Parse response as JSON
+    .then(data => {
+        if (data && Array.isArray(data) && data.length > 0 && data[0].response && data[0].response.response) {
+            const aiResponse = data[0].response.response;
+            displayMessage('ai', aiResponse);
+        } else {
+            console.error('Error: Unexpected response structure', data);
+        }
     })
     .catch(error => console.error('Error:', error))
     .finally(() => {
